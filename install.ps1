@@ -3,7 +3,7 @@ $ErrorActionPreference = "Stop"
 $repo = "GraphPilot/gpilot"
 $installDir = if ($env:GPILOT_INSTALL_DIR) { $env:GPILOT_INSTALL_DIR } else { "$env:LOCALAPPDATA\gpilot\bin" }
 
-$version = $env:GPILOT_VERSION
+$version = $env:GPILOT_VERSION -replace '^v',''
 if (-not $version) {
   $rel = Invoke-RestMethod "https://api.github.com/repos/$repo/releases/latest"
   $version = $rel.tag_name -replace '^v',''
@@ -16,7 +16,9 @@ Write-Host "Downloading $asset"
 Invoke-WebRequest "$base/$asset" -OutFile "$tmp\$asset"
 Invoke-WebRequest "$base/SHA256SUMS.txt" -OutFile "$tmp\SHA256SUMS.txt"
 
-$expected = (Select-String -Path "$tmp\SHA256SUMS.txt" -Pattern ([regex]::Escape($asset))).Line.Split(" ")[0]
+$match = Select-String -Path "$tmp\SHA256SUMS.txt" -Pattern ([regex]::Escape($asset))
+if (-not $match) { throw "checksum for $asset not found" }
+$expected = $match.Line.Split(" ")[0]
 $actual = (Get-FileHash "$tmp\$asset" -Algorithm SHA256).Hash.ToLower()
 if ($expected -ne $actual) { throw "checksum mismatch for $asset" }
 

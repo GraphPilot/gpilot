@@ -24,8 +24,10 @@ case "$os" in
   *) err "unsupported OS: $os (use install.ps1 on Windows, or Scoop)" ;;
 esac
 
-# Resolve latest version tag from the public repo.
+# Resolve latest version tag from the public repo. Accept an explicit override
+# with or without a leading "v" (tags/releases are published as v<version>).
 version="${GPILOT_VERSION:-}"
+version="${version#v}"
 if [ -z "$version" ]; then
   version=$(curl -fsSL "https://api.github.com/repos/${REPO}/releases/latest" \
     | sed -n 's/.*"tag_name": *"v\{0,1\}\([^"]*\)".*/\1/p' | head -n1)
