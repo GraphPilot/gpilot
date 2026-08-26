@@ -1,12 +1,12 @@
 {
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "GraphPilot CLI",
   "homepage": "https://github.com/GraphPilot/gpilot",
   "license": "Proprietary",
   "architecture": {
     "64bit": {
-      "url": "https://github.com/GraphPilot/gpilot/releases/download/v0.8.0/gpilot-cli-0.8.0-x86_64-pc-windows-msvc.zip",
-      "hash": "ba2c8a4606e1b7277160e676cb9ae46a66f995be23306abdd0841ace08ceeffb"
+      "url": "https://github.com/GraphPilot/gpilot/releases/download/v0.9.0/gpilot-cli-0.9.0-x86_64-pc-windows-msvc.zip",
+      "hash": "b96aa68ca0bcbb709d8edfcf6e847fc77601490ec784c5d1b3583ba77fc1a0c0"
     }
   },
   "bin": "gpilot.exe"
