@@ -13,11 +13,11 @@
 
 ### Shell one-liner (macOS, Linux)
 
-    curl -fsSL get.graphpilot.io | sh
+    curl --proto '=https' --tlsv1.2 -fsSL https://get.graphpilot.io | sh
 
 ### PowerShell (Windows)
 
-    irm get.graphpilot.io/install.ps1 | iex
+    irm https://get.graphpilot.io/install.ps1 | iex
 
 ### Manual download
 
@@ -47,8 +47,8 @@ The install scripts do the same: with cosign v2.5.0 or later on the PATH they ve
 signature and refuse to install on a mismatch; without it they print a warning and rely on
 the checksum alone. To make the signature mandatory:
 
-    curl -fsSL get.graphpilot.io | sh -s -- --require-signature
-    $env:GPILOT_REQUIRE_SIGNATURE = "1"; irm get.graphpilot.io/install.ps1 | iex
+    curl --proto '=https' --tlsv1.2 -fsSL https://get.graphpilot.io | sh -s -- --require-signature
+    $env:GPILOT_REQUIRE_SIGNATURE = "1"; irm https://get.graphpilot.io/install.ps1 | iex
 
 Then check the installed binary:
 

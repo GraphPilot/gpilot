@@ -1,4 +1,4 @@
-# gpilot installer for Windows. Usage: irm get.graphpilot.io/install.ps1 | iex
+# gpilot installer for Windows. Usage: irm https://get.graphpilot.io/install.ps1 | iex
 #
 # Integrity: the archive is checked against SHA256SUMS.txt, and SHA256SUMS.txt against its
 # keyless Sigstore signature (SHA256SUMS.txt.sigstore.json) when cosign v2.5.0 or later is
@@ -7,7 +7,7 @@
 # alone; it never downloads cosign itself.
 #
 # Make the signature mandatory (fail without cosign):
-#   $env:GPILOT_REQUIRE_SIGNATURE = "1"; irm get.graphpilot.io/install.ps1 | iex
+#   $env:GPILOT_REQUIRE_SIGNATURE = "1"; irm https://get.graphpilot.io/install.ps1 | iex
 $ErrorActionPreference = "Stop"
 $repo = "GraphPilot/gpilot"
 $installDir = if ($env:GPILOT_INSTALL_DIR) { $env:GPILOT_INSTALL_DIR } else { "$env:LOCALAPPDATA\gpilot\bin" }

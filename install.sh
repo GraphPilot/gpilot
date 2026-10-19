@@ -1,5 +1,5 @@
 #!/bin/sh
-# gpilot installer. Usage: curl -fsSL get.graphpilot.io | sh
+# gpilot installer. Usage: curl --proto '=https' --tlsv1.2 -fsSL https://get.graphpilot.io | sh
 #
 # Integrity: the archive is checked against SHA256SUMS.txt, and SHA256SUMS.txt against its
 # keyless Sigstore signature (SHA256SUMS.txt.sigstore.json) when cosign v2.5.0 or later is
@@ -8,8 +8,8 @@
 # alone; it never downloads cosign itself.
 #
 # Make the signature mandatory (fail without cosign) with either of:
-#   curl -fsSL get.graphpilot.io | sh -s -- --require-signature
-#   curl -fsSL get.graphpilot.io | GPILOT_REQUIRE_SIGNATURE=1 sh
+#   curl --proto '=https' --tlsv1.2 -fsSL https://get.graphpilot.io | sh -s -- --require-signature
+#   curl --proto '=https' --tlsv1.2 -fsSL https://get.graphpilot.io | GPILOT_REQUIRE_SIGNATURE=1 sh
 set -eu
 
 REPO="GraphPilot/gpilot"
